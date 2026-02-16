@@ -1,8 +1,10 @@
 # 🏠 Airbnb End-to-End Data Engineering Project
 
+Modern data stack implementation demonstrating production-grade ETL patterns using Azure, Snowflake, and dbt.
+
 ## 📋 Overview
 
-This project implements a complete end-to-end data engineering pipeline for Airbnb data using modern cloud technologies. The solution demonstrates best practices in data warehousing, transformation, and analytics using **Snowflake**, **dbt (Data Build Tool)**, and **AZURE**.
+This project implements a complete end-to-end data engineering pipeline for Airbnb data using modern cloud technologies. The solution demonstrates best practices in data warehousing, transformation, and analytics using **Snowflake**, **dbt (Data Build Tool)**, and **Azure**.
 
 The pipeline processes Airbnb listings, bookings, and hosts data through a medallion architecture (Bronze → Silver → Gold), implementing incremental loading, slowly changing dimensions (SCD Type 2), and creating analytics-ready datasets.
 
@@ -19,7 +21,7 @@ Source Data (CSV) → Azure ADLS → Snowflake (Staging) → Bronze Layer → Si
 
 - **Cloud Data Warehouse**: Snowflake
 - **Transformation Layer**: dbt (Data Build Tool)
-- **Cloud Storage**: Azure ADLS (implied)
+- **Cloud Storage**: Azure ADLS
 - **Version Control**: Git
 - **Python**: 3.12+
 - **Key dbt Features**:
@@ -28,6 +30,19 @@ Source Data (CSV) → Azure ADLS → Snowflake (Staging) → Bronze Layer → Si
   - Custom macros
   - Jinja templating
   - Testing and documentation
+
+## 🚀 Business Value
+
+- Enables historical tracking of host and listing changes (SCD Type 2)
+- Reduces compute cost using incremental processing
+- Provides analytics-ready datasets for BI tools
+- Demonstrates production-style data modeling practices
+
+### Data Ingestion Pattern
+
+- Created external stage referencing Azure ADLS
+- Defined file formats for CSV parsing
+- Loaded data into staging tables using Snowflake COPY INTO
 
 ## 📊 Data Model
 
@@ -217,3 +232,9 @@ Automatic schema separation by layer:
 - Silver models → `AIRBNB.SILVER.*`
 - Gold models → `AIRBNB.GOLD.*`
 
+## 📈 Future Improvements
+
+- Implement CI/CD with GitHub Actions
+- Add data quality monitoring
+- Integrate BI tool (Power BI / Tableau)
+- Add unit tests for macros
