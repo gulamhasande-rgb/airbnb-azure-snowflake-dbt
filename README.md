@@ -2,7 +2,7 @@
 
 ## 📋 Overview
 
-This project implements a complete end-to-end data engineering pipeline for Airbnb data using modern cloud technologies. The solution demonstrates best practices in data warehousing, transformation, and analytics using **Snowflake**, **dbt (Data Build Tool)**, and **AWS**.
+This project implements a complete end-to-end data engineering pipeline for Airbnb data using modern cloud technologies. The solution demonstrates best practices in data warehousing, transformation, and analytics using **Snowflake**, **dbt (Data Build Tool)**, and **AZURE**.
 
 The pipeline processes Airbnb listings, bookings, and hosts data through a medallion architecture (Bronze → Silver → Gold), implementing incremental loading, slowly changing dimensions (SCD Type 2), and creating analytics-ready datasets.
 
@@ -60,7 +60,7 @@ Slowly Changing Dimensions to track historical changes:
 ## 📁 Project Structure
 
 ```
-AWS_DBT_Snowflake/
+SnowflakeBnB/
 ├── README.md                           # This file
 ├── pyproject.toml                      # Python dependencies
 ├── main.py                             # Main execution script
@@ -74,7 +74,7 @@ AWS_DBT_Snowflake/
 │   ├── ddl.sql                         # Table creation scripts
 │   └── resources.sql
 │
-└── aws_dbt_snowflake_project/         # Main dbt project
+└── AirBnb_Proj/                        # Main dbt project
     ├── dbt_project.yml                 # dbt project configuration
     ├── ExampleProfiles.yml             # Snowflake connection profile
     │
@@ -117,75 +117,16 @@ AWS_DBT_Snowflake/
     │   └── source_tests.sql
     │
     └── seeds/                          # Static reference data
-```
 
-## 🚀 Getting Started
 
-### Prerequisites
-
-1. **Snowflake Account (will create one if doesn't exist)**
-
-2. **Python Environment**
-   - Python 3.12 or higher
-   - pip or uv package manager
-
-3. **AWS Account (will create one if doesn't exist) ** (for S3 storage)
-
-### Installation
-
-1. **Clone the Repository**
-   ```bash
-   git clone <repository-url>
-   cd AWS_DBT_Snowflake
-   ```
-
-2. **Create Virtual Environment**
-   ```bash
-   python -m venv .venv
-   .venv\Scripts\Activate.ps1  # Windows PowerShell
-   # or
-   source .venv/bin/activate    # Linux/Mac
-   ```
-
-3. **Install Dependencies**
-   ```bash
-   pip install -r requirements.txt
-   # or using pyproject.toml
-   pip install -e .
-   ```
-
-   **Core Dependencies:**
-   - `dbt-core>=1.11.2`
-   - `dbt-snowflake>=1.11.0`
-   - `sqlfmt>=0.0.3`
-
-4. **Configure Snowflake Connection**
-   
-   Create `~/.dbt/profiles.yml`:
-   ```yaml
-   aws_dbt_snowflake_project:
-     outputs:
-       dev:
-         account: <your-account-identifier>
-         database: AIRBNB
-         password: <your-password>
-         role: ACCOUNTADMIN
-         schema: dbt_schema
-         threads: 4
-         type: snowflake
-         user: <your-username>
-         warehouse: COMPUTE_WH
-     target: dev
-   ```
-
-5. **Set Up Snowflake Database**
+1. **Set Up Snowflake Database**
    
    Run the DDL scripts to create tables:
    ```bash
    # Execute DDL/ddl.sql in Snowflake to create staging tables
    ```
 
-6. **Load Source Data**
+2. **Load Source Data**
    
    Load CSV files from `SourceData/` to Snowflake staging schema:
    - `bookings.csv` → `AIRBNB.STAGING.BOOKINGS`
@@ -198,7 +139,7 @@ AWS_DBT_Snowflake/
 
 1. **Test Connection**
    ```bash
-   cd aws_dbt_snowflake_project
+   cd AirBnb_Proj
    dbt debug
    ```
 
