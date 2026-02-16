@@ -216,43 +216,11 @@ Automatic schema separation by layer:
 - Bronze models → `AIRBNB.BRONZE.*`
 - Silver models → `AIRBNB.SILVER.*`
 - Gold models → `AIRBNB.GOLD.*`
-
-## 📈 Data Quality
-
-### Testing Strategy
-- Source data validation tests
-- Unique key constraints
-- Not null checks
-- Referential integrity tests
-- Custom business rule tests
-
-### Data Lineage
-dbt automatically tracks data lineage, showing:
-- Upstream dependencies
-- Downstream impacts
-- Model relationships
-- Source to consumption flow
-
-## 🔐 Security & Best Practices
-
-1. **Credentials Management**
-   - Never commit `profiles.yml` with credentials
-   - Use environment variables for sensitive data
-   - Implement role-based access control (RBAC) in Snowflake
-
-2. **Code Quality**
-   - SQL formatting with `sqlfmt`
-   - Version control with Git
-   - Code reviews for model changes
-
-3. **Performance Optimization**
-   - Incremental models for large datasets
-   - Ephemeral models for intermediate transformations
-   - Appropriate clustering keys in Snowflake
+  
 
 ## 🐛 Troubleshooting
 
-### Common Issues
+### Common Issues faced while working on project
 
 1. **Connection Error**
    - Verify Snowflake credentials in `profiles.yml`
@@ -268,12 +236,6 @@ dbt automatically tracks data lineage, showing:
    - Run `dbt run --full-refresh` to rebuild from scratch
    - Verify source data timestamps
 
-## 📊 Future Enhancements
 
-- [ ] Add data quality dashboards
-- [ ] Implement CI/CD pipeline
-- [ ] Add more complex business metrics
-- [ ] Integrate with BI tools (Tableau/Power BI)
-- [ ] Add alerting and monitoring
 - [ ] Implement data masking for PII
 - [ ] Add more comprehensive testing suite
